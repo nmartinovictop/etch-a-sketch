@@ -37,12 +37,13 @@ function repaint() {
         indDiv.style.cssText = `width: calc(760px/${numOfSquares ** 0.5} - 2px); height: calc(760px/${numOfSquares ** 0.5} - 2px);`
         divContainer.append(indDiv)
 
-        let indDivs = document.querySelectorAll(".ind-div")
 
-        indDivs.forEach(div => {
-            div.addEventListener('mouseover', hoverAction)
-        })
     }
+    let indDivs = document.querySelectorAll(".ind-div")
+
+    indDivs.forEach(div => {
+        div.addEventListener('mouseover', hoverAction)
+    })
 }
 
 
