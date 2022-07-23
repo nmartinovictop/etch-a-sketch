@@ -2,7 +2,7 @@
 
 let divContainer = document.querySelector('.div-container')
 
-let numOfSquares = 10000
+let numOfSquares = 256
 
 
 for (i = 0; i < numOfSquares; i++) {
@@ -21,7 +21,6 @@ indDivs.forEach(div => {
 
 function hoverAction(e) {
     e.target.style.backgroundColor = 'black'
-    console.log('hover')
 }
 
 
@@ -50,9 +49,25 @@ function repaint() {
 let resizeBtn = document.querySelector('.resize-btn')
 resizeBtn.addEventListener('click', () => {
     //prompt function
-    userInput = prompt("how many squares")
-    userInput = parseInt(userInput)
+    userInput = prompter()
     numOfSquares = userInput**2
     repaint()
 
 })
+
+
+function prompter() {
+    userInput = prompt("how many squares")
+
+    if (isNaN(parseInt(userInput))) {
+        alert('Only enter a number')
+        prompter()
+    }
+
+    if (parseInt(userInput) > 100) {
+        alert('Enter a number less than 100')
+        prompter()
+    }
+
+    return parseInt(userInput)
+}
