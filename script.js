@@ -20,13 +20,31 @@ indDivs.forEach(div => {
 })
 
 function hoverAction(e) {
-    e.target.style.backgroundColor = 'black'
+    let rgb = randomRGB()
+    if (e.target.style.backgroundColor == '') {
+        e.target.style.backgroundColor = `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`
+    } else {
+        rgb = e.target.style.backgroundColor
+        rgb = rgb.slice(4,-1).split(",")
+        rgb = rgb.map(ele => parseInt(ele))
+        console.log(rgb)
+        e.target.style.backgroundColor = `rgb(${rgb[0]*.9},${rgb[1]*.9},${rgb[2]*.9})`
+        console.log( e.target.style.backgroundColor)
+    }
 }
 
 
 let resetBtn = document.querySelector('.reset-btn')
 resetBtn.addEventListener('click', repaint)
 
+
+function randomRGB() {
+    let red = Math.floor(Math.random() * 255)
+    let green = Math.floor(Math.random() * 255)
+    let blue = Math.floor(Math.random() * 255)
+
+    return [red,green,blue]
+}
 
 function repaint() {
     while (divContainer.firstChild) divContainer.removeChild(divContainer.firstChild)
